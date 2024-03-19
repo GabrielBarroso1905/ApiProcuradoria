@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: '../../.env' });
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
@@ -20,8 +20,8 @@ sequelize
   .then(async () => {
     console.log('Conexão bem-sucedida.');
 
-    // Listar tabelas
-    const [results, metadata] = await sequelize.query("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'TB_BEM'");
+    // // Listar tabelas
+    // const [results, metadata] = await sequelize.query("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'TB_BEM'");
 
     console.log('Tabelas encontradas:');
     results.forEach(row => {
